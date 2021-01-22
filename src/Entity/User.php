@@ -44,6 +44,15 @@ class User implements UserInterface
      */
     private $lastName;
 
+    public function __construct()
+    {
+
+        $this->roles = ['ROLE_USER'];
+        $this->createdAt = new \DateTime();
+        
+        
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -144,5 +153,14 @@ class User implements UserInterface
         $this->lastName = $lastName;
 
         return $this;
+    }
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt) 
+    {
+        $this->createdAt = $createdAt;
     }
 }
