@@ -5,7 +5,7 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
-use symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -19,15 +19,14 @@ class User implements UserInterface
      */
     private $id;
 
-    /**
-     * @Assert\NotBlank()
-     * @ORM\Column(type="string", length=180, unique=true)
+   /**
+     * @Assert\Email(
+     * message = "The email '{{ value }}' is not a valid email."
+     * )
      */
     private $email;
 
     /**
-     * @Assert\NotBlank()
-     * @Assert\NotBlank()
      * @ORM\Column(type="json")
      */
     private $roles = [];

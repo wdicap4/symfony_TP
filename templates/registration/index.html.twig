@@ -1,21 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RegistrationController!{% endblock %}
+{% block title %}Nous rejoindre{% endblock %}
 
 {% block body %}
-<div class="row">
+<div class="row ">
 
-  <div class="column large-121 tab-12">
+  <div class="column large-121 tab-12 btn btn-lg btn-primary pt-15">
 
-  {% for message in app.flashes('notice')%}
-    <div class="flash-notice">
+  {% for message in app.flashes('success')%}
+    <div class="flash-notice ">
     {{ message }}
     </div>
     {% endfor %}
   
     {{form_start(form)}}
     {{form_row(form)}}
-    <button type="submit">Envoyer</button>
+    <button class="btn btn-lg btn-primary pt-15" type="submit">Envoyer</button>
     {{form_end(form)}}
 
   </div>
