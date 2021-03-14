@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+  {% block body %}
+  <title>OpenStreetMap</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+ 
+<style>
+   #maCarte{
+       
+       height: 400px;
+       margin: 300PX auto;
+   }
+
+   h3 {
+  text-align: center;
+  color:rgb(5, 253, 17);
+  font-size: 3em;
+  text-shadow: 1px 3px 2px black;
+}
+
+     h1 {
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+    color: rgb(5, 253, 17);
+    font-size: 4em;
+    margin-top: 100px;
+    text-shadow: 1px 3px 2px black;
+  }
+
+    #imagePrincipale {
+    padding-top: 60px;
+    background: url(img/cover.jpg) no-repeat fixed 50% 50%;
+    background-size: cover;
+    height: 799px;
+  }
+  #premierTrait {
+    height: 2px;
+    width: 25%;
+    margin: -3px auto;
+    background-color: rgb(5, 253, 17);
+    box-shadow: 1px 3px 2px black;
+  }
+
+   
+</style>
+
+</head>
+<body>
+ <div id="imagePrincipale" >
+    <h1>DIGIITEK </h1>
+    <div  id="premierTrait"></div>
+    <h3>L'art d'être créatif</h3>
+    
+  </div>
+ <center>   
+ 
+ <h1>contact</h1> 
+ 
+ </center>
+
+ <div id="imagePrincipale">
+ </div>
+
+<div id="maCarte"></div>
+    
+
+    <!--  fichier js -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+   <script>
+
+       var villes = {
+
+          "Digitek" : {"lat" : 48.852969, "lon": 2.349903},
+          "toulouse" : {"lat" : 43.6043, "lon": 1.4437},
+          "Quimper" : {"lat" : 48.383, "lon": -4.100},
+          "Bayonne" : {"lat" : 43.500, "lon": -1.467},
+
+       }
+   
+// on initialise la carte
+
+   var carte = L.map('maCarte').setView([48.852969, 2.349903], 6);
+//on charge les tuiles
+   L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+    attribution: 'données <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France </a>',
+    minZoom : 18,
+    maxZoom:  20,
+  
+}).addTo(carte);
+
+/*var icone = L.icon({
+    iconUrl : "",
+    iconSize: [50, 50],
+    iconAnchor: [25 , 50]
+    popupAnchor : [0, -50]
+    ,{icon:icone}
+})*/
+
+//on parcourt les differentes villes
+for(ville in villes){
+// marqueur
+var marqueur = L.marker([villes[ville].lat, villes[ville].lon]).addTo(carte);
+//ajout d'un popup
+marqueur.bindPopup("<p>"+ville+"</p>");
+}
+
+
+
+
+   </script>
+</body>
+{% endblock %}
