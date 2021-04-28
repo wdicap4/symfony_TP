@@ -11,7 +11,7 @@ html {
   }
   #imagePrincipale {
     padding-top: 60px;
-    background: url(img/cover.jpg) no-repeat fixed 50% 50%;
+    background: url(/assets/img/cover.jpg) no-repeat fixed 50% 50%;
     background-size: cover;
     height: 799px;
   }
